@@ -1,1 +1,129 @@
 
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Organizador Pessoal</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body id="body">
+    <div class="header">
+        <div class="header-info">
+            <div class="time" id="time">00:00:00</div>
+            <div class="date" id="date">Carregando...</div>
+        </div>
+        <div class="weather-info">
+            <div class="weather-today">
+                <div>🌡️ São Paulo</div>
+                <div id="temperature">--°C</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('metas')">📋 Metas</button>
+            <button class="tab" onclick="showTab('financas')">💰 Finanças</button>
+            <button class="tab" onclick="showTab('clima')">🌤️ Clima</button>
+            <button class="tab" onclick="showTab('notas')">📝 Notas</button>
+        </div>
+
+        <!-- Aba Metas -->
+        <div class="content active" id="metas">
+            <div class="boards">
+                <div class="board">
+                    <h3 class="board-title">🎯 Para Fazer</h3>
+                    <div id="todo-cards"></div>
+                    <div class="add-card" onclick="addCard('todo')">
+                        + Adicionar Meta
+                    </div>
+                </div>
+                
+                <div class="board">
+                    <h3 class="board-title">⏳ Em Progresso</h3>
+                    <div id="progress-cards"></div>
+                    <div class="add-card" onclick="addCard('progress')">
+                        + Adicionar Meta
+                    </div>
+                </div>
+                
+                <div class="board">
+                    <h3 class="board-title">✅ Concluído</h3>
+                    <div id="done-cards"></div>
+                    <div class="add-card" onclick="addCard('done')">
+                        + Adicionar Meta
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Aba Finanças -->
+        <div class="content" id="financas">
+            <div class="finance-summary">
+                <div class="finance-card">
+                    <div>💰 Receitas</div>
+                    <div class="finance-amount positive" id="receitas">R$ 0,00</div>
+                </div>
+                <div class="finance-card">
+                    <div>💸 Despesas</div>
+                    <div class="finance-amount negative" id="despesas">R$ 0,00</div>
+                </div>
+                <div class="finance-card">
+                    <div>📊 Saldo</div>
+                    <div class="finance-amount" id="saldo">R$ 0,00</div>
+                </div>
+            </div>
+
+            <div class="form">
+                <h3>Adicionar Transação</h3>
+                <div class="form-group">
+                    <label>Descrição:</label>
+                    <input type="text" id="transacao-desc" placeholder="Ex: Salário, Supermercado...">
+                </div>
+                <div class="form-group">
+                    <label>Valor:</label>
+                    <input type="number" id="transacao-valor" placeholder="0.00" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label>Tipo:</label>
+                    <select id="transacao-tipo">
+                        <option value="receita">Receita</option>
+                        <option value="despesa">Despesa</option>
+                    </select>
+                </div>
+                <button class="btn" onclick="addTransaction()">Adicionar</button>
+            </div>
+
+            <div id="transacoes-list"></div>
+        </div>
+
+        <!-- Aba Clima -->
+        <div class="content" id="clima">
+            <h3>🌤️ Previsão da Semana - São Paulo</h3>
+            <div class="weather-week" id="weather-week">
+                <!-- Será preenchido via JavaScript -->
+            </div>
+        </div>
+
+        <!-- Aba Notas -->
+        <div class="content" id="notas">
+            <div class="form">
+                <h3>📝 Adicionar Nota</h3>
+                <div class="form-group">
+                    <label>Título:</label>
+                    <input type="text" id="nota-titulo" placeholder="Título da nota">
+                </div>
+                <div class="form-group">
+                    <label>Conteúdo:</label>
+                    <textarea id="nota-conteudo" rows="4" placeholder="Escreva sua nota aqui..."></textarea>
+                </div>
+                <button class="btn" onclick="addNote()">Salvar Nota</button>
+            </div>
+            <div id="notas-list"></div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
